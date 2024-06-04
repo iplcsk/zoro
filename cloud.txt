@@ -1,0 +1,21 @@
+1  yum update -y
+    2  sudo yum install -y docker
+    3  sudo service docker start
+    4  sudo usermod -a -G docker ec2-user
+    5  docker version
+    6  vi dockerfile
+    FROM httpd:latest
+    COPY index.html /var/www/html/
+    EXPOSE 80
+    CMD ["httpd", "-D", "FOREGROUND"]
+
+    7  vi index.html
+    8  docker build -t my-apache2-aiml .
+    9  docker run -d -p 8080:80 my-apache2-aiml
+   10  docker images
+   11  docker container ls
+   12 aws configure
+   13 create access key and secret key
+   14 region-ap-south-1
+   15 format-text
+   16 copy the commands from ecr
