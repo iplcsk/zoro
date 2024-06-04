@@ -1,0 +1,6 @@
+sudo su 
+yum update -y 
+yum install docker -y
+systemctl start docker
+docker pull httpd
+aws configure
