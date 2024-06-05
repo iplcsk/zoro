@@ -1,0 +1,213 @@
+to run the file in terminal:
+python3 file.py
+
+n = int(input("Enter first number: "))
+m = int(input("Enter second Number: "))
+
+s = min(n,m)
+while(True):
+	if n%s==0 and m%s==0:
+		print("GCD =",s)
+		break
+	s-=1
+
+
+n = int(input("Enter a Number: "))
+newton = 10
+approx = 0.5 * n
+for i in range(newton):
+    better = 0.5 * (approx + n/approx)
+    approx = better
+
+print(better)
+
+def power(b, p):
+    ans = 1
+    if p>=0:
+        for _ in range(p):
+            ans = ans * b
+    else:
+        p = -p
+        b = 1/b
+        for _ in range(p):
+            ans = ans * b
+
+    return ans
+			
+b = int(input("Enter the Base: "))
+p = int(input("Enter The Power: "))
+result = power(b, p)
+print("Answer is", result)
+
+
+n = int(input("Size of the array: "))
+arr = []
+for i in range(n):
+    m = int(input(f"Enter Element {i}: "))
+    arr.append(m)
+    
+for i in range(n):
+    for j in range(n):
+        if arr[i]>arr[j]:
+            arr[i],arr[j]=arr[j],arr[i]
+        
+print(*arr)
+print("Max1 =",arr[0])
+print("Max2 =",arr[1])
+print("Max3 =",arr[2])
+
+n = int(input("Size of the array: "))
+arr = []
+for i in range(n):
+    m = int(input(f"Enter Element {i}: "))
+    arr.append(m)
+k = int(input("Element to Search: "))
+f = True
+
+for i in range(n):
+    if arr[i]==k:
+        print("Found")
+        f = False
+        break
+    
+if(f):
+    print("Not Found")
+    
+ def binarySearch(arr, low, high, k):
+
+    if high >= low:
+        mid = (high + low) // 2
+        if arr[mid] == k:
+            return "Found"
+        elif arr[mid] > k:
+            return binarySearch(arr, low, mid - 1, k)
+        else:
+            return binarySearch(arr, mid + 1, high, k)
+
+    else:
+        return "Not Found"
+
+
+n = int(input("Size of the array: "))
+arr = []
+for i in range(n):
+    m = int(input(f"Enter Element {i+1}: "))
+    arr.append(m)
+k = int(input("Element to Search: "))
+for i in range(n):
+    for j in range(n):
+        if arr[i] < arr[j]:
+            arr[i], arr[j] = arr[j], arr[i]
+
+print(binarySearch(arr, 0, n - 1, k))
+
+def selection_sort(arr, n):
+    for i in range(n):
+        min = i
+        for j in range(i+1,n):
+            if arr[j] < arr[min]:
+                min = j
+        arr[i],arr[min] = arr[min],arr[i]
+    
+    print(*arr)
+
+n = int(input("Enter The Size of The array: "))
+arr = []
+for i in range(n):
+    arr.append(int(input(f"Enter The Element {i+1}: ")))
+    
+def insert_sort(arr, n):
+    for i in range(1,n):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr [j+1] = arr[j]
+            j -= 1
+        arr[j+1] = key
+    return arr
+
+n = int(input("Enter The size of the array: "))
+arr = []
+for i in range(n):
+    arr.append(int(input()))
+    
+print(insert_sort(arr, n))    
+    
+selection_sort(arr, n)
+
+def mul(arr1, arr2):
+    n = len(arr1)
+    m = len(arr2[0])
+    k = len(arr2)
+    arr = [] 
+    for i in range(n):
+        roy = []
+        for j in range(m):
+            roy.append(0)
+        arr.append(roy)
+           
+    for i in range(len(arr1)):
+        for j in range(len(arr2[0])):
+            for k in range(len(arr2)):
+                arr[i][j] += arr1[i][k] * arr2[k][j]
+                
+    return arr
+
+def Input(arr):
+    n = int(input("Enter The Row Size: "))
+    m = int(input("Enter The Column Size: "))
+    for i in range(n):
+        temp = []
+        for j in range(m):
+            n = int(input(f"Enter the Element {i,j}: "))
+            temp.append(n)
+        arr.append(temp)
+        
+arr1 = []
+arr2 = []
+Input(arr1)
+Input(arr2)
+print(mul(arr1, arr2))
+
+
+import sys
+
+program_name = sys.argv[0]
+list = []
+for i in range(1, len(sys.argv)):
+    arg = sys.argv[i]
+    list.append(arg)
+
+print("Word Count:",len(list)) 
+
+print("Unsorted List: ")
+print(*list,sep="\n")
+
+print("Sorted List: ")
+list.sort()
+print(*list,sep="\n")
+
+
+file = open("sample.txt","r")
+freq_word= ""
+freq = 0
+list = []
+for lines in file:
+    words = lines.lower().strip().split(" ")
+    for word in words:
+        list.append(word)
+        
+    
+for i in range(len(list)):
+    count=1
+    for j in range(i+1,len(list)):
+        if list[i]==list[j]:
+            count +=1
+    if freq < count:
+        freq = count
+        freq_word = list[i]
+        
+print(freq_word)
+print(freq)
+
+
