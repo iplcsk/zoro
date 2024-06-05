@@ -288,7 +288,29 @@ for k in range (len(count)):
 print("Most repeated word: ",arr[indx]) 
 print("Frequency: ",count[indx])
 
+(OR)
 
+file = open("sample.txt","r")
+freq_word= ""
+freq = 0
+list = []
+for lines in file:
+    words = lines.lower().strip().split(" ")
+    for word in words:
+        list.append(word)
+
+    
+for i in range(len(list)):
+    count=1
+    for j in range(i+1,len(list)):
+        if list[i]==list[j]:
+            count +=1
+    if freq < count:
+        freq = count
+        freq_word = list[i]
+
+print(freq_word)
+print(freq)
 
 ================================================================
 
